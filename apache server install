@@ -1,0 +1,15 @@
+[root@apacheserver1 koda]# system restart httpd
+bash: system: command not found
+[root@apacheserver1 koda]# systemctl restart httpd
+[root@apacheserver1 koda]# history
+yum install httpd
+systemctl enable httpd
+systemctl enable status  httpd
+systemctl status  httpd
+systemctl start  httpd
+systemctl status  httpd
+yum -y install mod ssl
+yum -y install mod_ssl
+system restart httpd
+systemctl restart httpd
+history
