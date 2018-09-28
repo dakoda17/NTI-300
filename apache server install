@@ -1,9 +1,7 @@
 yum install httpd
 systemctl enable httpd
-systemctl enable status  httpd
-systemctl status  httpd
 systemctl start  httpd
-systemctl status  httpd
 yum -y install mod_ssl
 systemctl restart httpd
-history
+sed -i 's/^/#/g' /etc/httpd/conf.d/welcome.conf
+echo "<html><body><h1>hi there</h1></body></html>" > /var/www/html/index.html
