@@ -1,0 +1,5 @@
+#CREATING A WHILE SCRIPT TO OUTPUT A SEARCH - THIS IS AN OR STATEMENT
+#!/bin/bash
+while IFS='' read -r line || [[ -n "$line" ]]; do 
+echo "Here's the text from file: $line"
+done < "$1"
