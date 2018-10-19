@@ -5,20 +5,6 @@ systemctl start  httpd
 sed -i 's/^/#/g' /etc/httpd/conf.d/welcome.conf
 echo "<html><body><h1>hi there</h1></body></html>" > /var/www/html/index.html
 
-#BACKING UP THE ORIGINAL SO YOU CAN WORK ON A COPY
-#!/bin/bash
-for file in $(ls -p /etc/httpd/conf.d |grep -v / ); do
-echo "backing up $file" cp $file $file.orig
-done
-
-#CREATING A SCRIPT TO FIND THE PRESENSE OF A USER
-#!/bin/bash
-userpresence=$( grep -ic "$1" /etc/passwd )
- if [ $userpresence -eq 1 ]; then
-echo "I found $1"
- else
-echo "I didnt' find $1"
-fi
 
 #CREATING A WHILE SCRIPT TO OUTPUT A SEARCH - THIS IS AN OR STATEMENT
 #!/bin/bash
