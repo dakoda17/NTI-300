@@ -1,7 +1,10 @@
 #!bin/bash
 #this is the code to create my personal git script  
+sudo su
 yum -y install git
-git clone https://github.com/dakoda17/NTI-300/blob/master/personalGitScriptt PersonalGitScript
+git clone https://github.com/dakoda17/personalGitScriptt PersonalGitScript
+#code to set username to dakoda17
+#code to set password
 
 #git config--global user.name "dakoda17" or $export USER="KodaM"
 
