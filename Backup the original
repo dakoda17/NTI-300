@@ -1,5 +1,5 @@
-#BACKING UP THE ORIGINAL SO YOU CAN WORK ON A COPY
 #!/bin/bash
+#BACKING UP THE ORIGINAL SO YOU CAN WORK ON A COPY
 for file in $(ls -p /etc/httpd/conf.d |grep -v / ); do
 echo "backing up $file" cp $file $file.orig
 done
