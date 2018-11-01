@@ -1,5 +1,5 @@
-#CREATING A SCRIPT TO FIND THE PRESENSE OF A USER
 #!/bin/bash
+#CREATING A SCRIPT TO FIND THE PRESENSE OF A USER
 userpresence=$( grep -ic "$1" /etc/passwd )
  if [ $userpresence -eq 1 ]; then
 echo "I found $1"
