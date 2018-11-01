@@ -1,0 +1,4 @@
+#!bin/bash
+#this is the code to create my personal git script  
+yum -y install git
+git clone https://github.com/dakoda17/NTI-300/new/master PersonalGitScript
