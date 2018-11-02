@@ -1,7 +1,5 @@
 #!/bin/bash
 #this is my automation for spinning up a django server
-#sudo into root
-sudo su
 
 #install python
 yum install python-pip
@@ -39,8 +37,8 @@ django-admin startproject project1
 #who
 
 #changing the ownership of project1 and django from root to be owned by the user
-#chown -R koda django
-#chown -R koda project1
+chown -R koda django
+chown -R koda project1
 
 #su - koda
 source /opt/django/django/bin/activate
@@ -50,7 +48,6 @@ source /opt/django/django/bin/activate
 #then try to get to the page by deleting the s in https and add colon 8000 to the end of the line enter
 #find the ALLOW command in project 1
 grep -iR ALLOWED /opt/django/project1
-
 
 #take the file and copy it:
 #/opt/django/project1/project1/settings.p
