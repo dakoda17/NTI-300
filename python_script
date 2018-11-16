@@ -1,5 +1,5 @@
 #!/usr/bin/phyton
-#this is my automation for spinning up a django server
+#this is my automation for spinning up a django server using python
 
 import OS
 
@@ -8,67 +8,39 @@ os.system('yum -y install python-pip')
 
 #install the version that allows for virtual instances
 os.system('pip install virtualenv')
-os.system('source /opt/django/bin/activate')
 
 #Upgrade per the system prompt
 os.system('pip install --upgrade pip')
-os.system('source /opt/django/bin/activate')
 
 #make a directory called /opt/django
-os.mkdir('mkdir /opt/django')
-os.system('source /opt/django/bin/activate')
-
-#cd into  directory called /opt/django
-os.chdir('cd /opt/djangon')
-os.system('source /opt/django/bin/activate')
-
-#next python install for 36
-os.system('yum install python36')
-os.system('source /opt/django/bin/activate')
-
-#next step activate python 36
-os.system('virtualenv -p python36 django')
-os.system('source /opt/django/bin/activate')
-
-#shell 2.75
-#python --version
-#os.system('source /opt/django/bin/activate')
-#shell 3.6.6
-#python --version
+os.mkdir('/opt/django')
+os.chdir('/opt/djangon')
 
 #putting it in our 3.6.6 version
-os.system('pip install django')
-os.system('source /opt/django/bin/activate')
+os.system('yum -y install python36')
+os.system('virtualenv -p python36 django')
+os.system('source /opt/django/django/bin/activate && pip install django')
 
-#django-admin --version
 #starts the first project
-os.system('django-admin startproject project1')
-os.system('source /opt/django/bin/activate')
-
-#check to see if its there
-#ls -l
-#check to see who you are logged in as
-#who
-
+os.chdir('/opt/django')
+os.system('source /opt/django/django/bin/activate ' + \
+          '&& django-admin --version ' + \
+          '&& django-admin startproject project1')
+          
 #changing the ownership of project1 and django from root to be owned by the user
-os.chdir('chown -R koda django')
-os.chdir('chown -R koda project1')
+os.system('chown -R koda /opt/django')
+os.system('chown -R koda /opt/django/project1')
 
-#su - koda
-os.system('/opt/django/project1/manage.py runserver 0.0.0.0:8000&')
-os.system('source /opt/django/django/bin/activate')
+os.system('sudo -u koda  sh -c "source /opt/django/django/bin/activate && python /opt/django/proj
+ect1/manage.py runserver 0.0.0.0:8000&"')
 
-#enter twice
+#other notes: 
 #make the firewall rule in google cloud
 #then try to get to the page by deleting the s in https and add colon 8000 to the end of the line enter
 
 #find the ALLOW command in project 1
-os.system('grep -iR ALLOWED /opt/django/project1')
+#os.system('grep -iR ALLOWED /opt/django/project1')
 
 #take the file and copy it:
 #/opt/django/project1/project1/settings.py
-
 #open the file to edit it with the allowed ip
-os.system('vim /opt/django/project1/project1/settings.py')
-
-os.system('sudo -u koda  sh -c " source /opt/django/django/bin/activate && python manage.py runserver 0.0.0.0:8000&"')
