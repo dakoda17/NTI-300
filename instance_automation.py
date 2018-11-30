@@ -1,10 +1,10 @@
-!#/usr/bin/python
+#!/usr/bin/python
 
-from oaut2client.client import GoogleCredentials
+from oauth2client.client import GoogleCredentials
 from googleapiclient import discovery
 import pprint
 
-credentials = GoolgeCredentials.get_application)default()
+credentials = GoogleCredentials.get_application_default()
 compute = discovery.build('compute', 'v1', credentials=credentials)
 
 project = 'astute-sky-217802'
@@ -14,20 +14,20 @@ zone = 'us-east1-b'
 #based on the machine type we can derive a name
 
 name ='spun1'
----------------------
+
 def list_instances(compute, project, zone):
-result = compute.instances().list(project=project, zone=zone).execute()
-return result['items']
+        result = compute.instances().list(project=project, zone=zone).execute()
+        return result['items']
   
-def create_instance(compute, project, zone, name):
+def create_instance(compute, project, zone):
   # Get the latest Centos 7image.
-startup_scritp = open ('startup-script.sh', 'r').read()
-    image_response = compute.images().getFromFamily(
-      poject='centos-cloud', family='centos-7').execute()
-       source_disk_image = image_response['selfLink']
-        machine_type = zones/%s/macineTypes/f1-micro' % zone
+      startup_script = open('startup-script.sh', 'r').read() 
+      image_response = compute.images().getFromFamily(
+         project='centos-cloud', family='centos-7').execute()
+      source_disk_image = image_response['selfLink'] 
+      machine_type = "zones/%s/machineTypes/f1-micro" % zone
        
-config = {
+      config = {
         'name': name,
         'machineType': machine_type,
 
@@ -62,7 +62,7 @@ config = {
         }],
 #Enable https/http for select instances
 "labels": {
-"http-serverr": ",
+ "http-server": "",
 "https-server":""
 },
 
@@ -85,16 +85,15 @@ config = {
         }
     }
 
-    return compute.instances().insert(
+      return compute.instances().insert(
         project=project,
         zone=zone,
         body=config).execute()
         
         
-newwstances = create_instances(compute, project, zone)
-instacnes = list_instances(compute, project, zone)
+newinstances = create_instance(compute, project, zone)
+instances = list_instances(compute, project, zone)
   
- pprint.pprint(newinstance)
- pprint.pprint(instance)
- 
- 
+pprint.pprint(newinstances)
+pprint.pprint(instances)
+
