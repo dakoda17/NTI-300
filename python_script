@@ -46,6 +46,3 @@ ect1/manage.py runserver 0.0.0.0:8000&"')
 #take the file and copy it:
 #/opt/django/project1/project1/settings.py
 #open the file to edit it with the allowed ip
-
-echo $myip
-
