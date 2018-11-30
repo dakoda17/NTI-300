@@ -1,7 +1,7 @@
-#!/usr/bin/phyton
+#!/usr/bin/python
 #this is my automation for spinning up a django server using python
 
-import OS
+import os
 
 #install python
 os.system('yum -y install python-pip')
@@ -31,6 +31,8 @@ os.system('source /opt/django/django/bin/activate ' + \
 os.system('chown -R koda /opt/django')
 os.system('chown -R koda /opt/django/project1')
 
+
+os.system("myip=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//') && sed -i \"s/ALLOWED_HOSTS = \[\]/ALLOWED_HOSTS = \[\'$myip\'\]/g\" /opt/django/project1/project1/settings.py")
 os.system('sudo -u koda  sh -c "source /opt/django/django/bin/activate && python /opt/django/proj
 ect1/manage.py runserver 0.0.0.0:8000&"')
 
@@ -44,3 +46,6 @@ ect1/manage.py runserver 0.0.0.0:8000&"')
 #take the file and copy it:
 #/opt/django/project1/project1/settings.py
 #open the file to edit it with the allowed ip
+
+echo $myip
+
