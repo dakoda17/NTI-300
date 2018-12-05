@@ -19,9 +19,9 @@ def list_instances(compute, project, zone):
         result = compute.instances().list(project=project, zone=zone).execute()
         return result['items']
   
-def create_instance(compute, project, zone):
+def create_instance(compute, project, zone, name):
   # Get the latest Centos 7image.
-      startup_script = open('startup-script.sh', 'r').read() 
+      startup_script = open('python_script.py', 'r').read() 
       image_response = compute.images().getFromFamily(
          project='centos-cloud', family='centos-7').execute()
       source_disk_image = image_response['selfLink'] 
@@ -62,8 +62,8 @@ def create_instance(compute, project, zone):
         }],
 #Enable https/http for select instances
 "labels": {
- "http-server": "",
-"https-server":""
+"http-server": "",
+"https-server": ""
 },
 
 "tags": {
@@ -91,7 +91,7 @@ def create_instance(compute, project, zone):
         body=config).execute()
         
         
-newinstances = create_instance(compute, project, zone)
+newinstances = create_instance(compute, project, zone, name)
 instances = list_instances(compute, project, zone)
   
 pprint.pprint(newinstances)
