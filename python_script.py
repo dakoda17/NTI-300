@@ -31,7 +31,7 @@ os.system('source /opt/django/django/bin/activate && pip install django' + \
 os.system('chown -R koda /opt/django')
 os.system('chown -R koda /opt/django/project1')
 
-os.system("myip=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//') && sed -i \"s/ALLOWED_HOSTS = \[\]/ALLOWED_HOSTS = \[\'$myip\'\]/g\" /opt/django/project1/project1/settings.py")
+#os.system("myip=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//') && sed -i \"s/ALLOWED_HOSTS = \[\]/ALLOWED_HOSTS = \[\'$myip\'\]/g\" /opt/django/project1/project1/settings.py")
 os.system('sudo -u koda  sh -c "source /opt/django/django/bin/activate && python /opt/django/project1/manage.py runserver 0.0.0.0:8000&"')
 
 #other notes: 
