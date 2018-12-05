@@ -60,20 +60,20 @@ def create_instance(compute, project, zone, name):
                 'https://www.googleapis.com/auth/logging.write'
             ]
         }],
-#Enable https/http for select instances
-"labels": {
-"http-server": "",
-"https-server": ""
-},
+        #Enable https/http for select instances
+        "labels": {
+        "http-server": "",
+        "https-server": ""
+        },
 
-"tags": {
-"items": [
-"http-server",
-"https-server"
-]
-},
+        "tags": {
+        "items": [
+        "http-server",
+        "https-server"
+        ]
+        },
 
- # Metadata is readable from the instance and allows you to
+        # Metadata is readable from the instance and allows you to
         # pass configuration from deployment scripts to instances.
         'metadata': {
             'items': [{
@@ -81,9 +81,9 @@ def create_instance(compute, project, zone, name):
                 # instance upon startup.
                 'key': 'startup-script',
                 'value': startup_script
-            }]
-        }
-    }
+             }]
+          }
+      }
 
       return compute.instances().insert(
         project=project,
