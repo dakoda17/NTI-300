@@ -14,16 +14,16 @@ os.system('pip install --upgrade pip')
 
 #make a directory called /opt/django
 os.mkdir('/opt/django')
-os.chdir('/opt/djangon')
+os.chdir('/opt/django')
 
 #putting it in our 3.6.6 version
 os.system('yum -y install python36')
 os.system('virtualenv -p python36 django')
-os.system('source /opt/django/django/bin/activate && pip install django')
+#os.system('source /opt/django/django/bin/activate && pip install django')
 
 #starts the first project
-os.chdir('/opt/django')
-os.system('source /opt/django/django/bin/activate ' + \
+#os.chdir('/opt/django')
+os.system('source /opt/django/django/bin/activate && pip install django' + \
           '&& django-admin --version ' + \
           '&& django-admin startproject project1')
           
